@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import UniversityList from './UniversityiesList';
 import './App.css';
 
 function App() {
+
+  const [country, setCountry] = useState('');
+
+  const handleCountryChange = (event) => {
+    setCountry(event.target.value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>List of Universities</h1>
+      <label htmlFor="country">Enter Country Name: </label>
+      <input type="text" id="country" value={country} onChange={handleCountryChange} />
+      {country && <UniversityList country={country} />}
     </div>
   );
 }
